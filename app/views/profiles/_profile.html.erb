@@ -1,0 +1,15 @@
+<li id="profile-<%= profile.id %>">
+  <%= link_to gravatar_for(profile.user, size: 50), profile.user %>
+  <span class="user"><%= link_to profile.user.name, profile.user %></span>
+  <span class="Related_links"><%= profile.Related_links %></span>
+  <span class="carrer"><%= profile.carrer %></span>
+  <span class="portfolio"><%= profile.portfolio %></span> --> %>
+  <span class="content"><%= profile.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(profile.created_at) %> ago.
+  </span>
+  <% if current_user?(profile.user) %>
+    <%= link_to "delete", profile, method: :delete,
+                                     data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

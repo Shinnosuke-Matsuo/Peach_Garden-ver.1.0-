@@ -8,4 +8,13 @@
       </h1>
     </section>
 　</aside>
+<div class="col-md-8">
+  <% if @user.profile.any? %>
+    <h3>New Profile</h3>
+    <ol class="profile">
+      <%= render @profile %>
+    </ol>
+    <%# <%= will_paginate @profiles %> %>
+  <% end %>
+</div>
 </div>

@@ -13,5 +13,11 @@
   <%= f.label :password_confirmation, "Confirmation"  %>
   <%= f.text_field :password_confirmation , class: 'form-control' %>
 
+  <ul>
+   <li><%= check_box "role", "entrepreneur" %>アントレプレナー</li>
+   <li><%= check_box "role", "programmer" %>プログラマー</li>
+   <li><%= check_box "role", "designer" %>デザイナー</li>
+  </ul>
+
 　<%= f.submit "Save changes", class: "btn btn-primary" %>
 <% end %>

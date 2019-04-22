@@ -2,11 +2,12 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
+gem 'bootstrap-sass', '3.3.7'
 gem 'bcrypt',         '3.1.12'
 gem 'faker',          '1.7.3'
-gem 'will_paginate',           '3.1.6'
-gem 'bootstrap-will_paginate', '1.0.0'
-
+# gem 'will_paginate',           '3.1.6'
+# gem 'bootstrap-will_paginate', '1.0.0'
+gem 'kaminari-bootstrap'
 gem 'rails-controller-testing'
 gem "jquery-rails"
 
@@ -39,7 +40,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'bootstrap-sass'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -68,3 +68,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'kaminari'

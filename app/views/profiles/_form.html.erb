@@ -1,0 +1,17 @@
+<%= form_for(@profile) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content , class: 'form-control' %>
+
+  <%= f.label :Related_links %>
+  <%= f.text_field :Related_links , class: 'form-control' %>
+
+  <%= f.label :carrer %>
+  <%= f.text_field :carrer , class: 'form-contorol' %>
+
+  <%= f.label :portfolio  %>
+  <%= f.text_field :portfolio , class: 'form-control' %>
+
+  <%= f.submit "Profile Post", class: "btn btn-primary" %>
+<% end %>

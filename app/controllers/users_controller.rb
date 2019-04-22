@@ -4,11 +4,12 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.page(params[:page])
   end
 
   def show
      @user = User.find(params[:id])
+     @profile = @user.profile
      # @profile = @user.profile.paginate(page: params[:page])
   end
 
@@ -17,7 +18,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)    # 実装は終わっていないことに注意!
+    @user = User.new(user_params)
+    params[:role].each do | di1,di2 |
+      if di2 == "1"
+         @user.role = di1
+      end
+    end
     if @user.save
       log_in @user
       flash[:success] = "Welcome!"
@@ -46,10 +52,11 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+
   private
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :role)
     end
 
     # beforeアクション

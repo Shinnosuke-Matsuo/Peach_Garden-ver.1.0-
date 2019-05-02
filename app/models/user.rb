@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :micropost, dependent: :destroy
   has_many :matchings, dependent: :destroy
   has_many :matching_microposts, through: :matchings, source: 'micropost'
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

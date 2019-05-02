@@ -4,5 +4,12 @@
     <% if current_user.admin? && !current_user?(user) %>
       | <%= link_to "delete", user, method: :delete,
                                     data: { confirm: "You sure?" } %>
-    <% end %>
+  <% end %>
+
+
+  <% if user.profile.content.length < 80 %>
+    <%= user.profile.content %>
+  <% else %>
+    <%= user.profile.content[0, 79] + "..." %>
+  <% end %>
 </li>

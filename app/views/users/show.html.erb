@@ -9,21 +9,21 @@
     </section>
 　</aside>
 
-<div class="col-md-8">
-  <% if !@user.profile.nil? %>
-    <h3>Profile</h3>
-    <ol class="profile">
-      <%= render @profile %>
-    </ol>
-  <% end %>
-</div>
+  <div class="col-md-8">
+    <% if !@user.profile.nil? %>
+      <h3>Profile</h3>
+      <ol class="profile">
+        <%= render @profile %>
+      </ol>
+    <% end %>
+  </div>
 
-<div class="col-md-8">
-  <% if !@user.micropost.nil? %>
-    <h3>Post</h3>
-    <ol class="micropost">
-      <%= render @micropost %>
-    </ol>
-  <% end %>
-</div>
+  <div class="col-md-8">
+    <% if !@user.micropost.nil? %>
+      <h3>Post</h3>
+      <ol class="micropost">
+        <%= render @micropost %>
+      </ol>
+    <% end %>
+  </div>
 </div>

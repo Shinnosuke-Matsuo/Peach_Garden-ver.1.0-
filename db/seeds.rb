@@ -45,6 +45,12 @@ end
                role: "designer")
 end
 
+
+# users = User.order(:created_at).take(10)
+#   content = Faker::Lorem.sentence(10)
+#   users.each { |user| user.profile.create!(content: content) }
+
+
 users = User.order(:created_at).take(4)
   content = Faker::Lorem.sentence(5)
   users.each { |user| user.micropost.create!(content: content) }

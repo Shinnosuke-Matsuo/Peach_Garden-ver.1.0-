@@ -7,8 +7,27 @@
     </span>
 
     <% unless current_user.role == "entrepreneur" %>
-      <%= link_to matchings_path(micropost_id: micropost.id), method: :post do %>
-        <%= image_tag 'icons/star-empty.png', class: 'topic-index-icon' %>
+       <% if !micropost.matching_users.include?(current_user) %>
+          <%= link_to matchings_path(micropost_id: micropost.id, user_id2: micropost.user_id), method: :post do %>
+            <%= image_tag 'icons/star-empty.png', class: 'topic-index-icon' %>
+          <% end %>
+       <% else %>
+            <%= image_tag 'icons/star-yellow.png', class: 'topic-index-icon' %>
+       <% end %>
+    <% end %>
+
+    <% if @user.id == current_user.id %>
+    <% else %>
+      <% if @isRoom = true %>
+        <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, :value=> @user.id %>
+          <% end %>
+          <%= f.submit "チャットを始める" %>
+        <% end %>
       <% end %>
     <% end %>
+
 </li>

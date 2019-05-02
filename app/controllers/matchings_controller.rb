@@ -5,7 +5,7 @@ class MatchingsController < ApplicationController
 
   def create
     matching = Matching.new
-    matching.user_id = current_user.user_id
+    matching.user_id = current_user.id
     matching.micropost_id = params[:micropost_id]
     matching.user2_id = params[:micropost][:user_id]
 

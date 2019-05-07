@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get 'matchings/index'
   post '/matchings', to: 'matchings#create'
+  delete 'matchings/destroy'
 
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]

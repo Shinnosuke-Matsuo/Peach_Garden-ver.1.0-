@@ -6,13 +6,16 @@
       Posted <%= time_ago_in_words(micropost.created_at) %> ago.
     </span>
 
+
     <% unless current_user.role == "entrepreneur" %>
        <% if !micropost.matching_users.include?(current_user) %>
           <%= link_to matchings_path(micropost_id: micropost.id, user_id2: micropost.user_id), method: :post do %>
             <%= image_tag 'icons/star-empty.png', class: 'topic-index-icon' %>
           <% end %>
        <% else %>
+          <%= link_to matchings_destroy_path(micropost_id: micropost.id, user_id2: micropost.user_id), method: :delete do %>
             <%= image_tag 'icons/star-yellow.png', class: 'topic-index-icon' %>
+          <% end %>
        <% end %>
     <% end %>
 

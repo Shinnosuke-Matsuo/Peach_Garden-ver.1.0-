@@ -20,7 +20,7 @@ class MicropostsController < ApplicationController
    def index
      @microposts = Micropost.page(params[:page])
 
-     @user = User.find(params[:id])
+     @user = User.find_by(params[:id])
      @currentUserEntry = Entry.where(user_id: current_user.id)
      @userEntry = Entry.where(user_id: @user.id)
 

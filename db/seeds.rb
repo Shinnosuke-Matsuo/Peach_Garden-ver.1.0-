@@ -46,9 +46,9 @@ end
 end
 
 
-# users = User.order(:created_at).take(10)
-#   content = Faker::Lorem.sentence(10)
-#   users.each { |user| user.profile.create!(content: content) }
+users = User.order(:created_at).take(10)
+  content = Faker::Lorem.sentence(10)
+  users.each { |user| user.create_profile!(content: content) }
 
 
 users = User.order(:created_at).take(4)

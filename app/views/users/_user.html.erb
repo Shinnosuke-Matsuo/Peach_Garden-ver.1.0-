@@ -6,8 +6,9 @@
                                     data: { confirm: "You sure?" } %>
   <% end %>
 
-
-  <% if user.profile.content.length < 80 %>
+  <% if !user.profile.present?  %>
+    <%= "..." %>
+  <% elsif user.profile.content.length < 80 %>
     <%= user.profile.content %>
   <% else %>
     <%= user.profile.content[0, 79] + "..." %>

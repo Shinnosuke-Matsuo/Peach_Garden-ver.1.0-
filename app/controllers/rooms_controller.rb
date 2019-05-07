@@ -25,6 +25,6 @@ class RoomsController < ApplicationController
   private
       def matched_users
         @mictopost = Micropost.find_by(params[:id])
-        redirect_to root_path unless @micropost.matching_users.include?(current_user)
+        redirect_to root_path unless @micropost.matching_user.include?(current_user)
       end
 end

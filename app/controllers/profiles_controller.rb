@@ -36,6 +36,10 @@ class ProfilesController < ApplicationController
   def update
   end
 
+  # def search
+  #   @profiles = Profile.search(params[:search])
+  # end
+
   private
 
     def profile_params

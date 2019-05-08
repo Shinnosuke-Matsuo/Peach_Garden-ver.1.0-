@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :matched_users
+  before_action :matched_users, only: [:create, :show]
 
   def create
     @room = Room.new
@@ -20,11 +20,14 @@ class RoomsController < ApplicationController
   end
 
   def index
+    @rooms = Room.all
   end
 
   private
       def matched_users
-        @mictopost = Micropost.find_by(params[:id])
-        redirect_to root_path unless @micropost.matching_user.include?(current_user)
+        if Matching.find_by(micropost_id: Room.find(params[:id]).micropost.id, user_id: current_user.id).nil?
+        redirect_to root_path
+        # unless @micropost.matching_users.include?(current_user)
+        end
       end
 end

@@ -21,7 +21,7 @@
 
     <% if @user.id == current_user.id %>
     <% else %>
-      <% if @isRoom = true %>
+      <% if @isRoom == true %>
         <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
       <% else %>
         <%= form_for @room do |f| %>
@@ -32,5 +32,6 @@
         <% end %>
       <% end %>
     <% end %>
+
 
 </li>

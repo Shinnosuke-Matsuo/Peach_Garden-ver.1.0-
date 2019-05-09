@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :matched_users, only: [:create, :show]
 
   def create
-    @room = Room.new
+    @room = Room.create(room_params)
     @entry1 = Entry.create(:room_id => @room.id, :user_id => current_user.id )
     @entry2 = Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(:room_id => @room.id))
     redirect_to "/rooms/#{@room.id}"
@@ -24,6 +24,10 @@ class RoomsController < ApplicationController
   end
 
   private
+      def room_params
+        params.require(:room).permit(:name)
+      end
+
       def matched_users
         if Matching.find_by(micropost_id: Room.find(params[:id]).micropost.id, user_id: current_user.id).nil?
         redirect_to root_path

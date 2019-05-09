@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.page(params[:page])
+    if search(params[:search])
+      @profiles = Profile.where(['content LIKE ?', "%#{search}%"])
+      @users = User.page(params[:page]).search(params[:search])
+    else
+      @users = User.all
+    end
   end
 
   def show
@@ -52,6 +57,14 @@ class UsersController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
   end
+
+  # def search
+  #   if search
+  #     @profiles = Profile.where(['content LIKE ?', "%#{search}%"])
+  #   else
+  #     @profile = Profile.all
+  #   end
+  # end
 
 
   private

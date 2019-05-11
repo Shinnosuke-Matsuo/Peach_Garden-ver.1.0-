@@ -48,9 +48,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  database: Peach_production
-  username: Peach
-  password: <%= ENV['PEACH_DATABASE_PASSWORD'] %>
+  <<: *default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  database: Peach_production

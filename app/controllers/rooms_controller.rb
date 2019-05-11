@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :matched_users, only: [:create, :show]
+  before_action :matched_users, only: :show
 
   def create
     @room = Room.create(room_params)

@@ -7,5 +7,4 @@ class Micropost < ApplicationRecord
   has_many :matchings
   has_many :matching_users, through: :matchings, source: 'user'
 
-  has_many :rooms
 end

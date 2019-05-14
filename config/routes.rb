@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   delete 'matchings/destroy'
 
   resources :messages, :only => [:create]
-  resources :rooms, :only => [:create, :show, :index]
 
   get '/search', to: 'users#search'
 

@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_01_152821) do
-
-  create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "room_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_entries_on_room_id"
-    t.index ["user_id"], name: "index_entries_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2019_05_14_143322) do
 
   create_table "matchings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -30,13 +21,13 @@ ActiveRecord::Schema.define(version: 2019_05_01_152821) do
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "room_id"
     t.text "content"
+    t.integer "from_id"
+    t.integer "to_id"
+    t.string "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_messages_on_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["room_id", "created_at"], name: "index_messages_on_room_id_and_created_at"
   end
 
   create_table "microposts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -60,12 +51,6 @@ ActiveRecord::Schema.define(version: 2019_05_01_152821) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -76,10 +61,6 @@ ActiveRecord::Schema.define(version: 2019_05_01_152821) do
     t.string "role"
   end
 
-  add_foreign_key "entries", "rooms"
-  add_foreign_key "entries", "users"
-  add_foreign_key "messages", "rooms"
-  add_foreign_key "messages", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "profiles", "users"
 end

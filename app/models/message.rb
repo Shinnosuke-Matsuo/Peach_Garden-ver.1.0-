@@ -13,4 +13,6 @@ class Message < ApplicationRecord
     where(room_id: room_id).last(500)
   end
 
+  after_create_commit { MessageBroadcastJob.perform_later self }
+
 end

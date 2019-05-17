@@ -8,19 +8,17 @@ class ProfilesController < ApplicationController
 
   def create
     @user = current_user
-    # @profile = current_user.build_profile(profile_params)
     @profile = @user.create_profile(profile_params)
    if @profile.save
      flash[:success] = "Profile created!"
      redirect_to root_url
    else
-     # @feed_items = []
      render 'static_pages/home'
    end
   end
 
   def index
-    @profiles = Profile.all
+    @profiles = Profile.all.page(params[:page])
   end
 
   def destroy
@@ -36,9 +34,9 @@ class ProfilesController < ApplicationController
   def update
   end
 
-  # def search
-  #   @profiles = Profile.search(params[:search])
-  # end
+  def search
+    @profiles = Profile.search(params[:search])
+  end
 
   private
 

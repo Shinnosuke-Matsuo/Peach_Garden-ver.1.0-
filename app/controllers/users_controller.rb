@@ -4,12 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    if search(params[:search])
-      @profiles = Profile.where(['content LIKE ?', "%#{search}%"])
-      @users = User.page(params[:page]).search(params[:search])
-    else
-      @users = User.all
-    end
+     @users = User.all.page(params[:page])
   end
 
   def show
@@ -17,6 +12,9 @@ class UsersController < ApplicationController
      @profile = @user.profile
      @micropost = @user.micropost.page(params[:page])
      # @profile = @user.profile.paginate(page: params[:page])
+
+     @room_id = message_room_id(current_user, @user)
+     @messages = Message.recent_in_room(@room_id)
   end
 
   def new
@@ -58,13 +56,15 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  # def search
-  #   if search
-  #     @profiles = Profile.where(['content LIKE ?', "%#{search}%"])
-  #   else
-  #     @profile = Profile.all
-  #   end
-  # end
+  def message_room_id(first_user, second_user)
+    first_id = first_user.id.to_i
+    second_id = second_user.id.to_i
+    if first_id < second_id
+      "#{first_user.id}-#{second_user.id}"
+    else
+      "#{second_user.id}-#{first_user.id}"
+    end
+  end
 
 
   private
@@ -73,16 +73,11 @@ class UsersController < ApplicationController
                                    :password_confirmation, :role)
     end
 
-    # beforeアクション
-
-
-    # 正しいユーザーかどうか確認
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    # 管理者かどうか確認
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end

@@ -1,15 +1,16 @@
 class MatchingsController < ApplicationController
   def index
-    @matching_topics = current_user.matching_topics
+    @matching_microposts = current_user.matching_microposts
   end
 
   def create
-    matching = Matching.new
-    matching.user_id = current_user.id
-    matching.micropost_id = params[:micropost_id]
-    matching.user2_id = params[:user_id]
+    @matching = Matching.new
+    @matching.user_id = current_user.id
+    @matching.micropost_id = params[:micropost_id]
+    @matching.user2_id = params[:user_id]
+    @matching_microposts = Micropost.where(id: @matching.micropost_id)
 
-    if matching.save
+    if @matching.save
       redirect_to microposts_path
       flash[:success] = "matching success"
     else

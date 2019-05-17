@@ -32,17 +32,8 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
-  # 試作feedの定義
-  # 完全な実装は次章の「ユーザーをフォローする」を参照
   def feed
     Profile.where("user_id = ?", id)
   end
 
-  # def self.search(search)
-  #   if search
-  #     where(['name LIKE ?', "%#{search}%"])
-  #   else
-  #     all
-  #   end
-  # end
 end

@@ -31,7 +31,6 @@
 
 <div class="center jumbotron">
   <h1>Welcome to the Peach Garden</h1>
-
   <h2>
     This is the home page for the
     <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
@@ -40,8 +39,28 @@
 
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+
+プログラミング学習を開始してから三ヶ月目に作成したポートフォリオ用のサイトです。<br>
+起業家とエンジニアとデザイナーのマッチングアプリです。ユーザー登録の時点で三つの属性を含めて登録します。<br>
+起業家はPostのページでやりたい起業やビジネス、及びそれによって成し遂げたい夢を書いて投稿します。エンジニアやデザイナーはそれらに星のマークをつけることで「マッチング成立」となります。<br>
+マッチングが成立した時点から、ユーザー詳細ページでダイレクトメッセージを送ることが可能になります。<br>
+他のクラウドソーシングのサービスとの違いとしては、「主にまだ特に大きな実績のない人々の使用が想定される」「お金ではなく、志や夢で繋がる」という点です。
+ちなみに、「Peach Garden」という名前は、三国志の「桃園の誓い」から取っています。<br>
+能力の異なる3人が志を持って集い、ついに最後には国を建ててしまったという故事から、このサイトもいずれはそのような「桃園」になって欲しいという願いを込めて名付けられました。
+
+ログインせず閲覧が可能なのは、「投稿一覧ページ」「ユーザー一覧ページ」となります。<br>
+ログインすると、投稿作成（起業家のみ）、マッチング（エンジニアとデザイナーのみ）、 ユーザー詳細の閲覧、ダイレクトメッセージの送信などが可能になります。<br>
+
+ログインアドレス及びパスワードは<br>
+起業家<br>
+アドレス:example@railstutorial.org<br>
+パスワード:foobar<br>
+エンジニア（デザイナーはエンジニアと特に違いがないため割愛）<br>
+アドレス：example01-0@railstutorial.org<br>
+パスワード：password<br>
+
+コードの詳細は以下のgithubをご覧ください。<br>
+<a href="https://github.com/Shinnosuke-Matsuo/Peach_Garden">https://github.com/Shinnosuke-Matsuo/Peach_Garden</a>
 
 
 <% end %>

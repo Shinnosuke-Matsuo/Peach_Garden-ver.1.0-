@@ -5,6 +5,9 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+         <% if current_user?(@user)  %>
+           <span><%= @user.email %></span>
+         <% end %>
       </h1>
     </section>
 
@@ -40,7 +43,7 @@
 
           <span class="Related_links"><%= @user.profile.Related_links %></span>
           <span class="carrer"><%= @user.profile.carrer %></span>
-          <span class="portfolio"><%= @user.profile.portfolio %></span> --> %>
+          <span class="portfolio"><%= @user.profile.portfolio %></span>
           <span class="content"><%= @user.profile.content %></span>
           <span class="timestamp">
             Posted <%= time_ago_in_words(@user.profile.created_at) %> ago.
@@ -56,7 +59,7 @@
   </div>
 
   <div class="col-md-8">
-    <% if !@user.micropost.nil? %>
+    <% unless @user.micropost.nil? %>
       <h3>Post</h3>
       <ol class="micropost">
         <%= render @micropost %>

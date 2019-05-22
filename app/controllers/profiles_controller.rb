@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
   before_action :logged_in_user
-  before_action :correct_user,   only: :destroy
 
   def new
     @profile = Profile.new
@@ -23,7 +22,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
-    flash[:success] = "Profile deleted"
+    flash[:success] = "Micropost deleted"
     redirect_to request.referrer || root_url
   end
 

@@ -4,13 +4,27 @@
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
-      <%# <!-- <section class="profile_form">
-        <%= render 'shared/profile_form' %>
-      </section> --> %>
+      <section class="profile_form">
+        <%= form_for(@profile) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+
+          <%= f.label :content %>
+          <%= f.text_field :content , class: 'form-control' %>
+
+          <%= f.label :Related_links %>
+          <%= f.text_field :Related_links , class: 'form-control' %>
+
+          <%= f.label :carrer %>
+          <%= f.text_field :carrer , class: 'form-contorol' %>
+
+          <%= f.label :portfolio  %>
+          <%= f.text_field :portfolio , class: 'form-control' %>
+        <% end %>
+
+      </section>
     </aside>
     <div class="col-md-8">
-      <h3>Profile Feed</h3>
-      <%= render 'shared/feed' %>
+
     </div>
   </div>
 <% else %>

@@ -4,8 +4,6 @@
 
 <ul class="users">
   <% @matching_microposts.each do |matching_microposts| %>
-    <%= render microposts %>
+    <%= render matching_microposts %>
   <% end %>
 </ul>
-
-<%= paginate @matching_microposts %>

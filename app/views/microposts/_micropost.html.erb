@@ -16,12 +16,13 @@
             <%= link_to matchings_path(micropost_id: micropost.id, user_id2: micropost.user_id), method: :post do %>
               <%= image_tag 'icons/star-empty.png', :size =>'20x20', class: 'topic-index-icon' %>
             <% end %>
+
          <% else %>
             <%= link_to matchings_destroy_path(micropost_id: micropost.id, user_id2: micropost.user_id), method: :delete do %>
               <%= image_tag 'icons/star-yellow.png', :size =>'20x20', class: 'topic-index-icon' %>
             <% end %>
          <% end %>
-      <% end %>
+     <% end %>
     <% end %>
 
 

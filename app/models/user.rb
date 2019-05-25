@@ -36,4 +36,13 @@ class User < ApplicationRecord
     Profile.where("user_id = ?", id)
   end
 
+  def self.search(search)
+    if search
+      where(['name LIKE ?', "%#{search}%"])
+    else
+      all
+    end
+  end
+
+
 end

@@ -17,7 +17,8 @@ class ProfilesController < ApplicationController
   end
 
   def index
-    @profiles = Profile.all.page(params[:page])
+    @profiles = Profile.all
+    # @profiles = Profile.all.page(params[:page])
   end
 
   def destroy
